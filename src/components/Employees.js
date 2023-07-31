@@ -4,6 +4,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import workercontext from '../context/worker/workerContext';
 import Spinner from './Spinner'
 import EmployeeCard from './EmployeeCard';
+import { Link } from 'react-router-dom';
 
 function Employees() {
 
@@ -14,17 +15,27 @@ function Employees() {
         getVerifiedWorkers();
     }, [])
 
+    if(workerLoad){
+        return <Spinner></Spinner>
+    }
+
     return (
-        <div><div className='container'>
-            <h3> Employees List : </h3>
-            <hr></hr>
-            {workerLoad && <Spinner />}
-            {verifiedWorkers.length==0 && <h5>No Employee Details found!</h5>}
-            {verifiedWorkers.map((worker) => {
-                return <EmployeeCard key={worker._id} worker={worker} ></EmployeeCard>;
-            }
-            )}
-        </div></div>
+        <div>
+            <div className='container'>
+            <div className='d-flex justify-content-left'>
+                <Link className='btn bg-light' to='/'><i class="fa-solid fa-arrow-left fa-lg"></i></Link>
+                <h3 className='mx-5'> Employee Lists : </h3>
+            </div>
+                <hr></hr>
+                <div className='d-flex flex-wrap mb-5 justify-content-left'>
+                    {verifiedWorkers.length==0 && <h5>No Employee Details found!</h5>}
+                    {verifiedWorkers.map((worker) => {
+                        return <EmployeeCard key={worker._id} worker={worker} ></EmployeeCard>;
+                    }
+                    )}
+                </div>
+            </div>
+        </div>
     )
 }
 

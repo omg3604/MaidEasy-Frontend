@@ -70,3 +70,11 @@
   -ms-transform: scale(1.15);
   transform: scale(1.15);
 }
+
+@media only screen and (max-width: 1200px) {
+  .maindiv{
+      margin-left: -8rem;
+      margin-right: 0rem;
+      padding: -5rem;
+  }
+}

@@ -94,6 +94,18 @@ export default function EmployeeCard(props) {
                     <p className="card-text">Contact : {worker.contact}</p>
                 </div>
 
+                <div className="card-body" style={{ backgroundColor: "white" }}>
+                    <p className="card-text">Expec. Monthly Salary : {worker.expectedSalary}</p>
+                </div>
+
+                {/* <div className="card-body" style={{ backgroundColor: "white" }}>
+                    <p className="card-text">Experience : {worker.experience} years</p>
+                </div>
+
+                <div className="card-body" style={{ backgroundColor: "white" }}>
+                    <p className="card-text">Respect : {worker.respect}</p>
+                </div> */}
+
                 <div className="d-flex justify-content-end">
                     <button className="btn btn-primary btn-rounded btncss" onClick={ondeleteClick}>Delete</button>
                 </div>

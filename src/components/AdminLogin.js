@@ -67,27 +67,28 @@ const AdminLogin = (props) => {
     // }
 
     return (
-        <div className='container my-4 pb-5'>
+        <div className='container mb-5'>
             <section className="intro">
                 <div className="bg-image h-100">
                     <div className="mask d-flex align-items-center h-100">
                         <div className="container">
+                            <Link className='btn bg-light rounded-circle py-2 my-2' to='/Login'><i className="fa-solid fa-arrow-left fa-lg"></i></Link>
                             <div className="row d-flex justify-content-center align-items-center">
                                 <div className="col-12 col-lg-10 col-xl-8">
                                     <div className="card" style={{borderRadius: "1rem"}}>
                                         <div className="row g-0">
                                             <div className="col-md-4 d-none d-md-block">
                                                 <img
-                                                    src="https://mdbootstrap.com/img/Photos/Others/sidenav2.jpg"
+                                                    src={require('../images/AdminLogin.png')}
                                                     alt="login form"
                                                     className="img-fluid" style={{borderTopLeftRadius: "1rem" , borderBottomLeftRadius: "1rem"}}
                                                 />
                                             </div>
-                                            <div className="col-md-8 d-flex align-items-center">
+                                            <div className="col-md-8 d-flex align-items-center bg-light">
                                                 <div className="card-body py-5 px-4 p-md-4">
 
                                                     <form onSubmit={handleSubmit}>
-                                                        <h4 className="fw-bold mb-4" style={{color: "#19376D"}}>Log in to your account</h4>
+                                                        <h4 className="fw-bold mb-4" style={{color: "#19376D"}}>Log into <strong>Admin</strong> account</h4>
                                                         <p className="mb-4" style={{color: "#45526e"}}>To log in, please fill in these text fiels with your e-mail address and password.</p>
 
                                                         <div className="form-outline mb-4">
@@ -105,9 +106,9 @@ const AdminLogin = (props) => {
                                                         <div className="d-flex justify-content-end">
                                                             <button className="btn btn-primary btn-rounded btncss" type="submit">Log in</button>
                                                         </div>
-                                                        <hr/>
+                                                        {/* <hr/>
                                                             <Link className="link float-start linkstyle" to="/SignUp">New User? Create Account!</Link>
-                                                            <Link className="link float-end linkstyle" to="/ForgetPassword">Forgot password?</Link>
+                                                            <Link className="link float-end linkstyle" to="/ForgetPassword">Forgot password?</Link> */}
                                                     </form>
                                                 </div>
                                             </div>

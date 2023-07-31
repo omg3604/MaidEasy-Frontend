@@ -4,42 +4,126 @@ import { useNavigate } from 'react-router-dom';
 import workerContext from '../context/worker/workerContext';
 import WorkerCard from './WorkerCard'
 import Spinner from './Spinner';
+import { Link } from 'react-router-dom';
+import { cityOptions } from '../data';
+import { stateOptions } from '../data';
+import Select from 'react-select';
 
 function BabySitter(props) {
 
+    const [isClearable, setIsClearable] = useState(true);
+    const [isSearchable, setIsSearchable] = useState(true);
+    const [isDisabled, setIsDisabled] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isRtl, setIsRtl] = useState(false);
+
     const Wcontext = useContext(workerContext);
-    const {getVerifiedWorkers , verifiedWorkers , workerLoad} = Wcontext;
+    const { getVerifiedWorkers, verifiedWorkers, workerLoad } = Wcontext;
 
     let navigate = useNavigate();
+
+    const [selectedState, setselectedState] = useState("");
+    const [selectedCity, setselectedCity] = useState("")
 
     useEffect(() => {
         getVerifiedWorkers();
     }, [])
 
+    const onStateChange = (State) => {
+        if (State) {
+            setselectedState(State.value);
+        }
+        else {
+            setselectedState("");
+        }
+    }
+
+    const onCityChange = (City) => {
+        if (City) {
+            setselectedCity(City.value);
+        }
+        else {
+            setselectedCity("");
+        }
+    }
+
     return (
         <div className='container'>
-            
-            <div className='row my-3 py-3'>
-                <div className='d-flex justify-content-between align-items-center'>
-                    <h2 style={{ color: "#19376D" }}> Available BabySitter : </h2>
-                    {/* <div className='d-flex align-items-center'>
-                        <p className='mx-3 my-0'>Search By Tag : </p>
-                        <select className="select me-5 rounded" style={{ backgroundColor: "#19376D", color: "white" }} onChange={ontagchange}>
-                            <option value="All">All</option>
-                            <option value="General">General</option>
-                            <option value="Personal">Personal</option>
-                            <option value="Business">Business</option>
-                            <option value="shared">Shared</option>
-                        </select>
-                    </div> */}
+
+            <div className='row mb-5 pb-3'>
+            <div className='d-flex justify-content-between align-items-center flex-wrap'>
+                    <div className='d-flex justify-content-center align-items-center flex-wrap my-2'>
+                        <Link className='btn bg-light rounded-circle py-2' to='/Services'><i class="fa-solid fa-arrow-left fa-lg"></i></Link>
+                        <h2 className='mx-5' style={{ color: "#19376D" }}> Babysitters : </h2>
+                    </div>
+                    <div className='d-flex justify-content-center align-items-center flex-wrap my-2'>
+                        <div className='d-flex mb-2 align-items-center mx-4'>
+                            <label htmlFor="state" className='mx-2 my-0'>State: </label>
+                            <Select
+                                className="basic-single col-md-10"
+                                classNamePrefix="select"
+                                defaultValue=""
+                                isDisabled={isDisabled}
+                                isLoading={isLoading}
+                                isClearable={isClearable}
+                                isRtl={isRtl}
+                                isSearchable={isSearchable}
+                                name="state"
+                                options={stateOptions}
+                                onChange={onStateChange}
+                                required
+                            />
+                        </div>
+                        <div className='d-flex mb-2 align-items-center mx-4'>
+                            <label htmlFor="city" className=' my-0 mx-2'>City: </label>
+                            <Select
+                                className="basic-single col-md-10"
+                                classNamePrefix="select"
+                                defaultValue=""
+                                isDisabled={isDisabled}
+                                isLoading={isLoading}
+                                isClearable={isClearable}
+                                isRtl={isRtl}
+                                isSearchable={isSearchable}
+                                name="city"
+                                options={cityOptions}
+                                onChange={onCityChange}
+                                required
+                            />
+                        </div>
+                    </div>
+
                 </div>
                 <hr></hr>
+                <div className='d-flex justify-content-center flex-wrap'>
+                    {!workerLoad && <h5>{verifiedWorkers.filter(w => w.occupation == "Babysitter").length === 0 && `No Babysitters found.`}</h5>}
+
+                    {/* When no state or city is selected */}
+                    {!workerLoad && selectedState == "" && selectedCity=="" && verifiedWorkers.filter(w => w.occupation == "Babysitter").map((worker) => {
+                        return <WorkerCard key={worker._id} vworker={worker}></WorkerCard>;
+                    }
+                    )}
+
+                    {/* when only state is selected */}
+                    {!workerLoad && !selectedState == "" && selectedCity=="" && verifiedWorkers.filter(w => w.occupation == "Babysitter" && w.state == selectedState).map((worker) => {
+                        return <WorkerCard key={worker._id} vworker={worker}></WorkerCard>;
+                    }
+                    )}
+
+                    {/* When only city is selected */}
+                    {!workerLoad && !selectedCity == "" && selectedState=="" && verifiedWorkers.filter(w => w.occupation == "Babysitter" && w.city == selectedCity).map((worker) => {
+                        return <WorkerCard key={worker._id} vworker={worker}></WorkerCard>;
+                    }
+                    )}
+
+                    {/* When both city and state are selectec */}
+                    {!workerLoad && !selectedCity == "" && !selectedState=="" && verifiedWorkers.filter(w => w.occupation == "Babysitter" && w.city == selectedCity && w.state==selectedState).map((worker) => {
+                        return <WorkerCard key={worker._id} vworker={worker}></WorkerCard>;
+                    }
+                    )}
+
+                </div>
                 {workerLoad && <Spinner />}
-                {!workerLoad && <h5>{verifiedWorkers.filter(w => w.occupation === "Babysitter").length === 0 && `No BabySitters found.`}</h5>}
-                {!workerLoad && verifiedWorkers.filter(w => w.occupation === "Babysitter").map((worker) => {
-                    return <WorkerCard key={worker._id} vworker={worker}></WorkerCard>;
-                }
-                )}
             </div>
         </div>
     )

@@ -9,6 +9,8 @@ const WorkerState = (props) => {
     const [workers, setWorkers] = useState(workersinitial);
     const [verifiedWorkers , setVerifiedWorkers] = useState(workersinitial);
     const [workerLoad , setworkerLoad] = useState(false);
+    const [BookWorker , setBookWorker] = useState({id:"" ,name:"" ,contact:"" ,age:0 , gender:"", city:"", state:"", occupation:"", expectedSalary:"" });
+    const [isAvail , setisAvail] = useState(false);
 
     // Get all verfied Workers
     const getVerifiedWorkers = async () => {
@@ -77,6 +79,53 @@ const WorkerState = (props) => {
         getVerifiedWorkers();
         setworkerLoad(false);
     }
+
+    const getWorkerDetails = async (workerid) => {
+        setworkerLoad(true);
+        const response = await fetch(`http://localhost:5000/api/worker/GetWorkerDetails/${workerid}`, {
+            method: "POST", // *GET, POST, PUT, DELETE, etc.
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token": localStorage.getItem('token'),
+            }
+        });
+         
+        const json = await response.json();
+        setBookWorker({
+            id: json.details._id,
+            name:json.details.name ,
+            contact: json.details.contact,
+            age: json.details.age, 
+            gender: json.details.gender, 
+            city: json.details.city, 
+            state: json.details.state, 
+            occupation: json.details.occupation, 
+            expectedSalary: json.details.expectedSalary 
+
+        });
+        setworkerLoad(false);
+    }
+
+    const checkAvailability = async(workerID , occupation) => {
+        setworkerLoad(true);
+        const response = await fetch(`${host}/api/worker/CheckAvailability` , {
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json",
+                "auth-token" : localStorage.getItem('token')
+            },
+            body : JSON.stringify({workerID , occupation}),
+        })
+        const json = await response.json();
+        if(json.status == "Available"){
+            setisAvail(true);
+        }
+        else{
+            setisAvail(false);
+        }
+        setworkerLoad(false);
+    }
+    
 
     /*
     // Add a note
@@ -192,7 +241,7 @@ const WorkerState = (props) => {
     */
 
     return (
-        <WorkerContext.Provider value={{ workers , verifiedWorkers , getVerifiedWorkers, getUnverifiedWorkers,  workerLoad , setworkerLoad , verifyWorker , deleteWorker}}> 
+        <WorkerContext.Provider value={{ workers , verifiedWorkers , getVerifiedWorkers, getUnverifiedWorkers,  workerLoad , setworkerLoad , verifyWorker , deleteWorker , getWorkerDetails, BookWorker , checkAvailability , isAvail}}> 
             {props.children}
         </WorkerContext.Provider>
     )

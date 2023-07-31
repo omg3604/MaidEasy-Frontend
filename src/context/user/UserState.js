@@ -1,10 +1,12 @@
-import React from "react";
-import { useState } from "react";
+import React from "react";                                                                                                                                                                                                                                 import { useState } from "react";
 import UserContext from "./userContext";
 
 const UserState = (props) => {
-    const host = "https://localhost:5000/";
+    const host = "http://localhost:5000";
     const [details, setDetails] = useState({_id:"" , name:"" , email:"" , contact:""})
+
+    let initialList = [];
+    const [UserBookings, setUserBookings] = useState(initialList);
 
     const [userLoad , setuserLoad] = useState(false);
 
@@ -66,8 +68,43 @@ const UserState = (props) => {
         setuserLoad(false);
     }
 
+    const getMyBookings = async (token) => {
+        setuserLoad(true);
+        const response = await fetch(`http://localhost:5000/api/user/getBookings`, {
+            method: "POST", // *GET, POST, PUT, DELETE, etc.
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token": token
+            }
+        });
+        const res = await response.json();
+        // console.log(res);
+        const {status , BookingsList}= res;
+        // console.log(BookingsList);
+        setUserBookings(BookingsList);
+        setuserLoad(false);
+    }
+
+    const deleteBooking = async (Bookingid , token) => {
+        setuserLoad(true);
+        const response = await fetch(`http://localhost:5000/api/user/deleteBooking`, {
+            method : "DELETE",
+            headers : {
+                "Content-Type" : "application/json",
+                "auth-token" : token
+            },
+            body : JSON.stringify({Bookingid}),
+        })
+        const res = await response.json();
+        let newUserBookings = UserBookings.filter((Booking) => {
+            return Booking._id !== Bookingid;
+        });
+        setUserBookings(newUserBookings);
+        setuserLoad(false);
+    }
+
     return (
-        <UserContext.Provider value={{ details , getUserDetails , editUser , deleteUser , userLoad , setuserLoad}}>
+        <UserContext.Provider value={{ details , getUserDetails , editUser , deleteUser , userLoad , setuserLoad , UserBookings , getMyBookings , deleteBooking}}>
             {props.children}
         </UserContext.Provider>
     )

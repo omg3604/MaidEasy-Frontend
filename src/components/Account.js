@@ -2,17 +2,12 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import './Account.css'
 import { useNavigate } from 'react-router-dom';
 import userContext from '../context/user/userContext';
-import noteContext from '../context/worker/workerContext';
 import Spinner from './Spinner';
 
 const Account = (props) => {
     const Ucontext = useContext(userContext);
     const { details, editUser, getUserDetails , deleteUser , userLoad} = Ucontext;
-    const { _id, name, email, date } = details;
-
-    const Ncontext = useContext(noteContext);
-    const {deleteAllNotes} = Ncontext;
-
+    const { _id, name, email, contact } = details;
     
     //  console.log(details);
 
@@ -24,16 +19,16 @@ const Account = (props) => {
 
     let navigate = useNavigate();
 
-    const [newdata, setNewdata] = useState({ id: _id, ename: name, eemail: email, edate: date });
+    const [newdata, setNewdata] = useState({ id: _id, ename: name, eemail: email, econtact: contact });
 
     const updateUser = () => {
         ref.current.click();    // for opening the modal on clicking edit icon
-        setNewdata({ ...newdata, ename: details.name, eemail: details.email });   // for populating the form with current note values
+        setNewdata({ ...newdata, ename: details.name, eemail: details.email , econtact: details.contact});   // for populating the form with current note values
     }
 
     const handleClick = (e) => {
         // console.log(_id);
-        editUser(_id, newdata.ename, newdata.eemail);
+        editUser(_id, newdata.ename, newdata.eemail , newdata.econtact);
         //console.log("Updating the note...", note);
         refClose.current.click();   // for closing the modal after clicking save changes button
         //props.showAlert("success" , "User Data updated successfully");
@@ -53,8 +48,6 @@ const Account = (props) => {
     }
 
     const dhandleClick = () => {
-        // for deleting all the notes of that user
-        deleteAllNotes();
         // for deleting the details of the user from the database.
         deleteUser(_id);
         drefClose.current.click();
@@ -86,6 +79,10 @@ const Account = (props) => {
                                 <div className="form-group d-flex my-3">
                                     <label htmlFor="eemail" className="form-label mx-3">Email</label>
                                     <input type="email" className="form-control" id="eemail" name="eemail" placeholder="Enter Email" onChange={onchange} value={newdata.eemail} required />
+                                </div>
+                                <div className="form-group d-flex my-3">
+                                    <label htmlFor="econtact" className="form-label mx-3">Contact</label>
+                                    <input type="number" className="form-control" id="econtact" name="econtact" placeholder="Enter Contact" onChange={onchange} value={newdata.econtact} required />
                                 </div>
                             </form>
                         </div>
@@ -135,11 +132,11 @@ const Account = (props) => {
                             <div className='container'>
                                 <table className="table table-borderless text-center">
                                     <tbody>
-                                        <tr>
+                                        {/* <tr>
                                             <td>Id</td>
                                             <td>:</td>
                                             <td>{_id}</td>
-                                        </tr>
+                                        </tr> */}
                                         <tr>
                                             <td>Name</td>
                                             <td>:</td>
@@ -151,9 +148,9 @@ const Account = (props) => {
                                             <td>{email}</td>
                                         </tr>
                                         <tr>
-                                            <td>Date Joined</td>
+                                            <td>Contact</td>
                                             <td>:</td>
-                                            <td>{date.substring(0, 10)}</td>
+                                            <td>{contact}</td>
                                         </tr>
                                     </tbody>
                                 </table>

@@ -1,17 +1,9 @@
 import React from 'react';
-import userContext from '../context/user/userContext';
 import { useContext, useEffect, useRef, useState } from 'react';
 import './Contact.css';
 
 
 const Contact = () => {
-
-  // For maintaining the user data on the navbar upon reload also.
-  const Ucontext = useContext(userContext);
-  const { getUserDetails } = Ucontext;
-  useEffect(() => {
-    getUserDetails(localStorage.getItem('token'));
-  }, [])
 
   const [formStatus, setFormStatus] = React.useState('Send')
   const onSubmit = (e) => {
@@ -26,7 +18,7 @@ const Contact = () => {
     console.log(conFom)
   }
   return (
-    <div className="container mt-5">
+    <div className="container">
       <h2 className="mb-3 text-center">Contact Us!</h2>
       <hr className='my-5'></hr>
 

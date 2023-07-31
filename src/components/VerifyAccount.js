@@ -31,7 +31,7 @@ const VerifyAccount = (props) => {
         setuserLoad(true);
 
         // calling the otp verification endpoint
-        const response = await fetch(`https://odd-mite-shoe.cyclic.app/api/auth/verifyOTP`, {
+        const response = await fetch(`http://localhost:5000/api/user/verifyOTP`, {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             headers: {
                 "Content-Type": "application/json",

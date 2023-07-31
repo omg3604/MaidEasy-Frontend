@@ -4,6 +4,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import workercontext from '../context/worker/workerContext';
 import WorkerCard from './WorkerCard';
 import Spinner from './Spinner'
+import userContext from '../context/user/userContext';
 import { Link } from 'react-router-dom';
 
 
@@ -11,26 +12,82 @@ const WithoutLogin = () => {
 
   return (
     <div>
-      <div className='firstSec py-5'>
+      <div className='firstSec pt-3'>
         <div className="jumbotron jumbotron-fluid mb-4 p-5">
-          <div className="container d-flex flex-column justify-content-center align-items-center ">
-            <h1 className="display-4 my-3 text-center">Welcome to MaidEasy</h1>
-            <h3 className="display-7 text-center" >Modern India'a Domestic Help Hiring Platform</h3>
-            <p className="lead my-3 text-center">In search of a "DIDI", Dont't worry! We are with you.</p>
-            <Link to='/Services' className="container d-flex justify-content-center my-4"><button className="btn btn-primary btn-lg btncss" >Get workers list</button></Link>
-            {/* <div className="container d-flex justify-content-center my-4"><button onClick={ongetclick} className="btn btn-primary btn-lg btncss" >Add a worker</button></div> */}
-          </div>
-          <div className='container d-flex'>
-            <Link to='/HouseHelps' className="container d-flex justify-content-center my-4"><button className="btn btn-primary btn-lg btncss" >House Helps</button></Link>
-            <Link to='/Cooks' className="container d-flex justify-content-center my-4"><button className="btn btn-primary btn-lg btncss" >Cooks</button></Link>
-            <Link to='/CareTakers' className="container d-flex justify-content-center my-4"><button className="btn btn-primary btn-lg btncss" >Care Takers</button></Link>
-            <Link to='/BabySitters' className="container d-flex justify-content-center my-4"><button className="btn btn-primary btn-lg btncss" >Babysitters</button></Link>
-            <Link to='/Drivers' className="container d-flex justify-content-center my-4"><button className="btn btn-primary btn-lg btncss" >Drivers</button></Link>
+          <div className="container d-flex flex-column">
+            <h1 className="display-4 my-3 text-left">Welcome to MaidEasy</h1>
+            <h3 className="display-7 text-left" >Modern India'a Domestic Help Hiring Platform</h3>
+            <p className="lead my-3 text-left">"Unlock the comfort of a pristine home: <br></br>Find trusted domestic help with our premier hiring platform."</p>
+            <Link to='/Services' className="container d-flex justify-content-left my-4 text-decoration-none"><button className="btn btn-primary btn-lg btncss" >Book Now</button></Link>
           </div>
         </div>
       </div>
 
-      <div id="carouselExampleIndicators" className="carousel slide features" data-bs-ride="true">
+      <div className='my-5' style={{backgroundColor : "#19376D"}}>
+        <div className='p-5 text-center'>
+          <h3 className='text-light'>Our Featured Services</h3>
+          <hr className='container' style={{color : "white"}}></hr>
+          <p  className='text-light display-6'>Hire professionals, <br></br>Experienced specifically for your needs</p>
+        </div>
+      </div>
+
+
+      <div className='container'>
+        <div className='d-flex justify-content-start jobdisplay'>
+          <div className="card d-flex flex-row JobCard" style={{ width: "30rem" }}>
+            <img src={require('../images/HouseHelp.png')} style={{ width: "15rem", height: "10rem" }}></img>
+            <div className="card-body">
+              <h5 className="card-title">HouseHelps</h5>
+              <p className="card-text descp">Experienced, punctual & verified housekeepers for everyday home cleaning!</p>
+              <Link to="/Services/HouseHelps" className="btn btncss"> Go <i className="fa-solid fa-angles-right" style={{color : "white"}}></i></Link>
+            </div>
+          </div>
+        </div>
+        <div className='d-flex justify-content-end jobdisplay'>
+          <div className="card d-flex flex-row JobCard" style={{ width: "30rem" }}>
+            <div className="card-body">
+              <h5 className="card-title">Cooks</h5>
+              <p className="card-text descp">Great Cooks, "Sizzling with passion, precision, and flavor in every task they undertake!"</p>
+              <Link to="/Services/Cooks" className="btn btncss"> Go <i className="fa-solid fa-angles-right" style={{color : "white"}}></i></Link>
+            </div>
+            <img src={require('../images/Cooks.png')} style={{ width: "15rem", height: "12rem" }}></img>
+          </div>
+        </div>
+        <div className='d-flex justify-content-start jobdisplay'>
+          <div className="card d-flex flex-row JobCard" style={{ width: "30rem" }}>
+            <img src={require('../images/Babysitters.png')} style={{ width: "15rem", height: "10rem" }}></img>
+            <div className="card-body">
+              <h5 className="card-title">Babysitters</h5>
+              <p className="card-text descp">"Compassionate caregivers dedicated to nurturing smiles and creating cherished childhood memories."</p>
+              <Link to="/Services/Babysitters" className="btn btncss"> Go <i className="fa-solid fa-angles-right" style={{color : "white"}}></i></Link>
+            </div>
+          </div>
+        </div>
+        <div className='d-flex justify-content-end jobdisplay'>
+          <div className="card d-flex flex-row JobCard" style={{ width: "30rem" }}>
+            <div className="card-body">
+              <h5 className="card-title">Office Boys</h5>
+              <p className="card-text descp">"Efficient and reliable office support, ensuring seamless operations and a well-organized work"</p>
+              <Link to="/Services/OfficeBoys" className="btn btncss"> Go <i className="fa-solid fa-angles-right" style={{color : "white"}}></i></Link>
+            </div>
+            <img src={require('../images/OfficeBoys.png')} style={{ width: "15rem", height: "12rem" }}></img>
+          </div>
+        </div>
+        <div className='d-flex justify-content-start'>
+          <div className="card d-flex flex-row JobCard" style={{ width: "30rem" }}>
+            <img src={require('../images/Drivers.png')} style={{ width: "15rem", height: "10rem" }}></img>
+            <div className="card-body">
+              <h5 className="card-title">Drivers</h5>
+              <p className="card-text descp">"Steering success with skill and dedication: Keep the wheels turning and deliver excellence on every journey."</p>
+              <Link to="/Services/Drivers" className="btn btncss"> Go <i className="fa-solid fa-angles-right" style={{color : "white"}}></i></Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      {/* <div id="carouselExampleIndicators" className="carousel slide features mt-5" data-bs-ride="true">
         <h2 className='text-light text-center mb-5'>Features</h2>
         <div className="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
@@ -96,35 +153,7 @@ const WithoutLogin = () => {
           <span className="carousel-control-next-icon" aria-hidden="true"></span>
           <span className="visually-hidden">Next</span>
         </button>
-      </div>
-
-      {/* <section className="mb-5 pb-5">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-4 rotate">
-              <div className="feature-box">
-                <i className="fa-solid fa-rocket fa-3x"></i>
-                <h3>Easy to Use</h3>
-                <p>Our note-making platform is designed to be user-friendly and intuitive.</p>
-              </div>
-            </div>
-            <div className="col-md-4 rotate">
-              <div className="feature-box">
-                <i className="fas fa-folder fa-3x"></i>
-                <h3>Organize Your Notes</h3>
-                <p>Create folders and tags to keep your notes organized and easy to find.</p>
-              </div>
-            </div>
-            <div className="col-md-4 rotate">
-              <div className="feature-box">
-                <i className="fas fa-globe fa-3x"></i>
-                <h3>Access Anywhere</h3>
-                <p>Access your notes from anywhere with an internet connection.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
+      </div> */}
 
       <div className='my-5'>
         <hr></hr>
