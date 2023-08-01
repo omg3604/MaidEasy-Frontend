@@ -9,7 +9,7 @@ import Select from 'react-select';
 
 const OfficeBoyForm = (props) => {
 
-  const host = process.env.BACKEND;
+  const host = "https://nice-cyan-gorilla-tux.cyclic.cloud";
 
   const [Bookingdetails, setBookingDetails] = useState({ address: "", startDate: "", salary: 0, hoursPerDay: 0 });
 

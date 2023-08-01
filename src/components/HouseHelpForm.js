@@ -9,7 +9,7 @@ import Select from 'react-select';
 
 const HouseHelpForm = (props) => {
 
-  const host = process.env.BACKEND;
+  const host = "https://nice-cyan-gorilla-tux.cyclic.cloud";
 
   const [isClearable, setIsClearable] = useState(true);
   const [isSearchable, setIsSearchable] = useState(true);

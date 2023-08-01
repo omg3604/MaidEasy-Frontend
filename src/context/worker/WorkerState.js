@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 
 const WorkerState = (props) => {
-    const host = process.env.BACKEND;
+    const host = "https://nice-cyan-gorilla-tux.cyclic.cloud";
     const workersinitial = [];
 
     const [workers, setWorkers] = useState(workersinitial);

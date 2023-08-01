@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const AdminLogin = (props) => {
 
-    const host = process.env.BACKEND;
+    const host = "https://nice-cyan-gorilla-tux.cyclic.cloud";
 
     const [credentials, setCredentials] = useState({ email: "", password: "" });
     
