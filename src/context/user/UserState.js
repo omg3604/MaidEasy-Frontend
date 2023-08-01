@@ -2,7 +2,7 @@ import React from "react";                                                      
 import UserContext from "./userContext";
 
 const UserState = (props) => {
-    const host = "https://repulsive-newt-trench-coat.cyclic.cloud";
+    const host = process.env.BACKEND;
     const [details, setDetails] = useState({_id:"" , name:"" , email:"" , contact:""})
 
     let initialList = [];

@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 
 const AdminLogin = (props) => {
 
+    const host = process.env.BACKEND;
 
-    const host = "https://repulsive-newt-trench-coat.cyclic.cloud";
     const [credentials, setCredentials] = useState({ email: "", password: "" });
     
     // For updating the details of user on account section and navbar upon new login.

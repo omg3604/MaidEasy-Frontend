@@ -8,52 +8,6 @@ import './Register.css'
 
 const Register = (props) => {
 
-    // const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" });
-
-    // const context = useContext(UserContext);
-    // const { userLoad, setuserLoad } = context;
-
-    // let navigate = useNavigate();
-
-    // const onchange = (e) => {
-    //     setCredentials({ ...credentials, [e.target.name]: e.target.value });
-    // }
-
-    // const signupSubmit = async (e) => {
-    //     e.preventDefault();
-    //     setuserLoad(true);
-    //     // API Call
-    //     const { name, email, password } = credentials;
-    //     const response = await fetch(`https://odd-mite-shoe.cyclic.app/api/auth/createuser`, {
-    //         method: "POST", // *GET, POST, PUT, DELETE, etc.
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({ name, email, password }), // body data type must match "Content-Type" header
-    //     });
-
-    //     const json = await response.json();
-    //     if (json.status === "PENDING") {
-    //         const userId = json.data.userId;
-    //         localStorage.setItem('userid', userId);
-    //         localStorage.setItem('usermail', email);
-    //         console.log(json);
-    //         console.log(userId);
-    //         navigate("/VerifyAccount");
-    //         props.showAlert("success", "An otp has been sent to the given email.");
-    //     }
-    //     else {
-    //         //console.log(json);
-    //         props.showAlert("warning", json.message);
-    //     }
-    //     setCredentials({ name: "", email: "", password: "", cpassword: "" });
-    //     setuserLoad(false);
-    // }
-
-    // if (userLoad) {
-    //     return <Spinner />;
-    // }
-
     return (
         <div className='container me-3 ms-5 my-5 p-5 maindiv'>
             <div class="d-flex justify-content-around flex-wrap maindiv">

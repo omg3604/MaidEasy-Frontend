@@ -9,7 +9,7 @@ import Select from 'react-select';
 
 const HouseHelpForm = (props) => {
 
-  const host = "https://repulsive-newt-trench-coat.cyclic.cloud";
+  const host = process.env.BACKEND;
 
   const [isClearable, setIsClearable] = useState(true);
   const [isSearchable, setIsSearchable] = useState(true);

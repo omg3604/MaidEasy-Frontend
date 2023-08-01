@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 function UserRegister(props) {
 
-    const host = "https://repulsive-newt-trench-coat.cyclic.cloud";
+    const host = process.env.BACKEND;
 
     const [credentials, setCredentials] = useState({ name: "", email: "", contact:"" , password: "", cpassword: "" });
 

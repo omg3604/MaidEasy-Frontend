@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const UserLogin = (props) => {
 
-    const host = "https://repulsive-newt-trench-coat.cyclic.cloud";
+    const host = process.env.BACKEND;
 
     const [credentials, setCredentials] = useState({ email: "", password: "" });
 

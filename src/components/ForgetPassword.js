@@ -7,7 +7,7 @@ import './ForgetPassword.css'
 
 function ForgetPassword(props) {
 
-    const host = "https://repulsive-newt-trench-coat.cyclic.cloud";
+    const host = process.env.BACKEND;
 
     const [usermail, Setusermail] = useState("");
     const [validmail, setvalidmail] = useState(true);

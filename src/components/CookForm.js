@@ -9,7 +9,7 @@ import Select from 'react-select';
 
 const CookForm = (props) => {
 
-  const host = "https://repulsive-newt-trench-coat.cyclic.cloud";
+  const host =process.env.BACKEND;
 
   const [Bookingdetails, setBookingDetails] = useState({ address: "", startDate: "", salary: 0, mealCount: 0, headCount: 0 });
 

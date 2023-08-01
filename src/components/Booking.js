@@ -20,14 +20,7 @@ function Booking(props) {
     const onBookClick = () => {
         setisBook(true);
     }
-
-    // useEffect(() => {
-    //     getWorkerDetails(BookWorker._id);
-    //     checkAvailability(BookWorker._id , BookWorker.occupation);
-    // }, [])
     
-
-
     if(workerLoad){
         return <Spinner></Spinner>
     }

@@ -5,7 +5,7 @@ import Spinner from './Spinner';import './ResetPassword.css'
 
 function ResetPassword(props) {
 
-    const host = "https://repulsive-newt-trench-coat.cyclic.cloud";
+    const host = process.env.BACKEND;
 
     const context = useContext(UserContext);
     const { userLoad, setuserLoad } = context;

@@ -5,7 +5,7 @@ import Spinner from './Spinner';
 import './VerifyAccount.css';
 
 const VerifyAccount = (props) => {
-    const host = "https://repulsive-newt-trench-coat.cyclic.cloud";
+    const host = process.env.BACKEND;
 
     const userid = localStorage.getItem('userid');
     let usermail = localStorage.getItem('usermail') || "aufhaksbfkjabdkf@gmail.com";
