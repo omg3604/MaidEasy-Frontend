@@ -9,6 +9,8 @@ import Select from 'react-select';
 
 const OfficeBoyForm = (props) => {
 
+  const host = "https://repulsive-newt-trench-coat.cyclic.cloud";
+
   const [Bookingdetails, setBookingDetails] = useState({ address: "", startDate: "", salary: 0, hoursPerDay: 0 });
 
   const wcontext = useContext(WorkerContext);
@@ -41,7 +43,7 @@ const OfficeBoyForm = (props) => {
       props.showAlert("warning", "Please provide your valid address");
     }
     else {
-      const response = await fetch(`http://localhost:5000/api/worker/BookOfficeBoy`, {
+      const response = await fetch(`${host}/api/worker/BookOfficeBoy`, {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         headers: {
           "Content-Type": "application/json",

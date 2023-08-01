@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom'
 
 function UserRegister(props) {
 
+    const host = "https://repulsive-newt-trench-coat.cyclic.cloud";
+
     const [credentials, setCredentials] = useState({ name: "", email: "", contact:"" , password: "", cpassword: "" });
 
     const context = useContext(UserContext);
@@ -23,7 +25,7 @@ function UserRegister(props) {
         setuserLoad(true);
         // API Call
         const { name, email, password , contact} = credentials;
-        const response = await fetch(`http://localhost:5000/api/user/createuser`, {
+        const response = await fetch(`${host}/api/user/createuser`, {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             headers: {
                 "Content-Type": "application/json",

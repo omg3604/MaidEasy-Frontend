@@ -5,6 +5,8 @@ import Spinner from './Spinner';
 import './VerifyAccount.css';
 
 const VerifyAccount = (props) => {
+    const host = "https://repulsive-newt-trench-coat.cyclic.cloud";
+
     const userid = localStorage.getItem('userid');
     let usermail = localStorage.getItem('usermail') || "aufhaksbfkjabdkf@gmail.com";
     let funct = localStorage.getItem('function') || "login";
@@ -31,7 +33,7 @@ const VerifyAccount = (props) => {
         setuserLoad(true);
 
         // calling the otp verification endpoint
-        const response = await fetch(`http://localhost:5000/api/user/verifyOTP`, {
+        const response = await fetch(`${host}/api/user/verifyOTP`, {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             headers: {
                 "Content-Type": "application/json",

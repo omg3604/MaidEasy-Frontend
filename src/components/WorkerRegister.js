@@ -10,6 +10,8 @@ import { stateOptions, cityOptions, genderOptions } from '../data'
 
 const WorkerRegister = (props) => {
 
+    const host = "https://repulsive-newt-trench-coat.cyclic.cloud";
+
     const [isClearable, setIsClearable] = useState(true);
     const [isSearchable, setIsSearchable] = useState(true);
     const [isDisabled, setIsDisabled] = useState(false);
@@ -80,7 +82,7 @@ const WorkerRegister = (props) => {
             props.showAlert("warning", "Please enter your expected Monthly salary.");
         }
         else {
-            const response = await fetch(`http://localhost:5000/api/worker/registerWorker`, {
+            const response = await fetch(`${host}/api/worker/registerWorker`, {
                 method: "POST", // *GET, POST, PUT, DELETE, etc.
                 headers: {
                     "Content-Type": "application/json",

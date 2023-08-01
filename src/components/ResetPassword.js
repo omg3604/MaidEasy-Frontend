@@ -5,6 +5,8 @@ import Spinner from './Spinner';import './ResetPassword.css'
 
 function ResetPassword(props) {
 
+    const host = "https://repulsive-newt-trench-coat.cyclic.cloud";
+
     const context = useContext(UserContext);
     const { userLoad, setuserLoad } = context;
 
@@ -20,7 +22,7 @@ function ResetPassword(props) {
         e.preventDefault();
         setuserLoad(true);
         // console.log(usermail);
-        const response = await fetch(`https://odd-mite-shoe.cyclic.app/api/auth/resetpassword`, {
+        const response = await fetch(`${host}/api/auth/resetpassword`, {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             headers: {
                 "Content-Type": "application/json",

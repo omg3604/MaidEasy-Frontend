@@ -9,12 +9,7 @@ import Select from 'react-select';
 
 const CookForm = (props) => {
 
-  const [isClearable, setIsClearable] = useState(true);
-  const [isSearchable, setIsSearchable] = useState(true);
-  const [isDisabled, setIsDisabled] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isRtl, setIsRtl] = useState(false);
-
+  const host = "https://repulsive-newt-trench-coat.cyclic.cloud";
 
   const [Bookingdetails, setBookingDetails] = useState({ address: "", startDate: "", salary: 0, mealCount: 0, headCount: 0 });
 
@@ -52,7 +47,7 @@ const CookForm = (props) => {
       props.showAlert("warning", "Please provide your valid address");
     }
     else {
-      const response = await fetch(`http://localhost:5000/api/worker/BookCook`, {
+      const response = await fetch(`${host}/api/worker/BookCook`, {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         headers: {
           "Content-Type": "application/json",

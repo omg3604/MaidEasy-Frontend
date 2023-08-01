@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 
 const UserLogin = (props) => {
 
+    const host = "https://repulsive-newt-trench-coat.cyclic.cloud";
+
     const [credentials, setCredentials] = useState({ email: "", password: "" });
 
     // For updating the details of user on account section and navbar upon new login.
@@ -25,7 +27,7 @@ const UserLogin = (props) => {
         setuserLoad(true);
 
         // API Call
-        const response = await fetch(`http://localhost:5000/api/user/login`, {
+        const response = await fetch(`${host}/api/user/login`, {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             headers: {
                 "Content-Type": "application/json",

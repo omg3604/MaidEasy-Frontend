@@ -7,6 +7,8 @@ import './ForgetPassword.css'
 
 function ForgetPassword(props) {
 
+    const host = "https://repulsive-newt-trench-coat.cyclic.cloud";
+
     const [usermail, Setusermail] = useState("");
     const [validmail, setvalidmail] = useState(true);
 
@@ -19,7 +21,7 @@ function ForgetPassword(props) {
         e.preventDefault();
         setuserLoad(true);
         // API Call
-        const response = await fetch(`https://odd-mite-shoe.cyclic.app/api/auth/forgetpassword`, {
+        const response = await fetch(`${host}/api/auth/forgetpassword`, {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             headers: {
                 "Content-Type": "application/json",

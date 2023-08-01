@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 
 const WorkerState = (props) => {
-    const host = "http://localhost:5000";
+    const host = "https://repulsive-newt-trench-coat.cyclic.cloud";
     const workersinitial = [];
 
     const [workers, setWorkers] = useState(workersinitial);
@@ -82,7 +82,7 @@ const WorkerState = (props) => {
 
     const getWorkerDetails = async (workerid) => {
         setworkerLoad(true);
-        const response = await fetch(`http://localhost:5000/api/worker/GetWorkerDetails/${workerid}`, {
+        const response = await fetch(`${host}/api/worker/GetWorkerDetails/${workerid}`, {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             headers: {
                 "Content-Type": "application/json",

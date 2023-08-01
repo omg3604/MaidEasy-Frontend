@@ -2,7 +2,7 @@ import React from "react";                                                      
 import UserContext from "./userContext";
 
 const UserState = (props) => {
-    const host = "http://localhost:5000";
+    const host = "https://repulsive-newt-trench-coat.cyclic.cloud";
     const [details, setDetails] = useState({_id:"" , name:"" , email:"" , contact:""})
 
     let initialList = [];
@@ -70,7 +70,7 @@ const UserState = (props) => {
 
     const getMyBookings = async (token) => {
         setuserLoad(true);
-        const response = await fetch(`http://localhost:5000/api/user/getBookings`, {
+        const response = await fetch(`${host}/api/user/getBookings`, {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             headers: {
                 "Content-Type": "application/json",
@@ -87,7 +87,7 @@ const UserState = (props) => {
 
     const deleteBooking = async (Bookingid , token) => {
         setuserLoad(true);
-        const response = await fetch(`http://localhost:5000/api/user/deleteBooking`, {
+        const response = await fetch(`${host}/api/user/deleteBooking`, {
             method : "DELETE",
             headers : {
                 "Content-Type" : "application/json",

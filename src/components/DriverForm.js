@@ -9,6 +9,8 @@ import Select from 'react-select';
 
 const DriverForm = (props) => {
 
+  const host = "https://repulsive-newt-trench-coat.cyclic.cloud";
+
   const [Bookingdetails, setBookingDetails] = useState({ address: "", startDate: "", salary: 0, hoursPerDay: 0 });
 
   const wcontext = useContext(WorkerContext);
@@ -41,7 +43,7 @@ const DriverForm = (props) => {
       props.showAlert("warning", "Please provide your valid address");
     }
     else {
-      const response = await fetch(`http://localhost:5000/api/worker/BookDriver`, {
+      const response = await fetch(`${host}/api/worker/BookDriver`, {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         headers: {
           "Content-Type": "application/json",
