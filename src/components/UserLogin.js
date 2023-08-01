@@ -36,7 +36,7 @@ const UserLogin = (props) => {
         });
 
         const json = await response.json();
-        console.log(json);
+        // console.log(json);
         if (json.status === "PENDING") {
             const userId = json.data.userId;
             localStorage.setItem('userid' , userId);

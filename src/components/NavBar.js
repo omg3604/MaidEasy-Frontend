@@ -52,10 +52,10 @@ const NavBar = (props) => {
                                     <Link className={`nav-link ${location.pathname === "/VerifyRequests" ? "active" : ""} linkcss`} to="/VerifyRequests"> <i className="fa-solid fa-handshake-angle"></i> Requests</Link>
                                 </li>}
                                 {localStorage.getItem('token') && localStorage.getItem('admin') && <li className="nav-item mx-2">
-                                    <Link className={`nav-link ${location.pathname === "/Employees" ? "active" : ""} linkcss`} to="/Employees"> <i class="fa-solid fa-user"></i> Employees</Link>
+                                    <Link className={`nav-link ${location.pathname === "/Employees" ? "active" : ""} linkcss`} to="/Employees"> <i className="fa-solid fa-user"></i> Employees</Link>
                                 </li>}
                                 {localStorage.getItem('token') && !localStorage.getItem('admin') && <li className="nav-item mx-2">
-                                    <Link className={`nav-link ${location.pathname === "/MyBookings" ? "active" : ""} linkcss`} to="/MyBookings"> <i class="fa-solid fa-circle-check"></i> My Bookings</Link>
+                                    <Link className={`nav-link ${location.pathname === "/MyBookings" ? "active" : ""} linkcss`} to="/MyBookings"> <i className="fa-solid fa-circle-check"></i> My Bookings</Link>
                                 </li>}
                                 <li className="nav-item mx-2">
                                     <Link className={`nav-link ${location.pathname === "/contact" ? "active" : ""} linkcss`} to="/contact"> <i className="fa-solid fa-phone-volume"></i> Contact Us</Link>
