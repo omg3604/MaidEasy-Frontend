@@ -9,7 +9,7 @@ import Select from 'react-select';
 
 const BabysitterForm = (props) => {
 
-  const host = "https://nice-cyan-gorilla-tux.cyclic.cloud";
+  const host = "https://blue-healthy-horse.cyclic.app";
 
   const [Bookingdetails, setBookingDetails] = useState({ address : "" , startDate:"" , salary:0 , babyAge : 0 , hoursPerDay:0});
 

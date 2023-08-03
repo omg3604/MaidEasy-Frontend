@@ -9,7 +9,7 @@ import Select from 'react-select';
 
 const CookForm = (props) => {
 
-  const host = "https://nice-cyan-gorilla-tux.cyclic.cloud";
+  const host = "https://blue-healthy-horse.cyclic.app";
 
   const [Bookingdetails, setBookingDetails] = useState({ address: "", startDate: "", salary: 0, mealCount: 0, headCount: 0 });
 

@@ -10,7 +10,7 @@ import { stateOptions, cityOptions, genderOptions } from '../data'
 
 const WorkerRegister = (props) => {
 
-    const host = "https://nice-cyan-gorilla-tux.cyclic.cloud";
+    const host = "https://blue-healthy-horse.cyclic.app";
 
     const [isClearable, setIsClearable] = useState(true);
     const [isSearchable, setIsSearchable] = useState(true);

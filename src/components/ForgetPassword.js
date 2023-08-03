@@ -7,7 +7,7 @@ import './ForgetPassword.css'
 
 function ForgetPassword(props) {
 
-    const host = "https://nice-cyan-gorilla-tux.cyclic.cloud";
+    const host = "https://blue-healthy-horse.cyclic.app";
 
     const [usermail, Setusermail] = useState("");
     const [validmail, setvalidmail] = useState(true);

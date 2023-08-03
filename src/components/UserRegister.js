@@ -38,8 +38,8 @@ function UserRegister(props) {
             const userId = json.data.userId;
             localStorage.setItem('userid', userId);
             localStorage.setItem('usermail', email);
-            console.log(json);
-            console.log(userId);
+            // console.log(json);
+            // console.log(userId);
             navigate("/VerifyAccount");
             props.showAlert("success", "An otp has been sent to the given email.");
         }

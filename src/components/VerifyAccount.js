@@ -5,7 +5,7 @@ import Spinner from './Spinner';
 import './VerifyAccount.css';
 
 const VerifyAccount = (props) => {
-    const host = "https://nice-cyan-gorilla-tux.cyclic.cloud";
+    const host = "https://blue-healthy-horse.cyclic.app";
 
     const userid = localStorage.getItem('userid');
     let usermail = localStorage.getItem('usermail') || "aufhaksbfkjabdkf@gmail.com";

@@ -5,7 +5,7 @@ import Spinner from './Spinner';import './ResetPassword.css'
 
 function ResetPassword(props) {
 
-    const host = "https://nice-cyan-gorilla-tux.cyclic.cloud";
+    const host = "https://blue-healthy-horse.cyclic.app";
 
     const context = useContext(UserContext);
     const { userLoad, setuserLoad } = context;

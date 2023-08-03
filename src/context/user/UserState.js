@@ -2,7 +2,7 @@ import React from "react";                                                      
 import UserContext from "./userContext";
 
 const UserState = (props) => {
-    const host = "https://nice-cyan-gorilla-tux.cyclic.cloud";
+    const host = "https://blue-healthy-horse.cyclic.app";
     const [details, setDetails] = useState({_id:"" , name:"" , email:"" , contact:""})
 
     let initialList = [];
