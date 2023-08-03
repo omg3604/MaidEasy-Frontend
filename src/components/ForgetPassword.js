@@ -28,15 +28,15 @@ function ForgetPassword(props) {
             },
             body: JSON.stringify({ email : usermail }), // body data type must match "Content-Type" header
         });
-        console.log("submmited email");
+        // console.log("submmited email");
         const json = await response.json();
         if (json.status === "PENDING") {
             const userId = json.data.userId;
             localStorage.setItem('userid' , userId);
             localStorage.setItem('usermail' , usermail);
             localStorage.setItem('function' , "reset");
-            console.log(json);
-            console.log(userId);
+            // console.log(json);
+            // console.log(userId);
             navigate("/VerifyAccount");
             props.showAlert("success", "An otp has been sent to the given email.");
         }

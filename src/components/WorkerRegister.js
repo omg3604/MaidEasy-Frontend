@@ -59,7 +59,7 @@ const WorkerRegister = (props) => {
 
     const onSubmitClick = async (e) => {
         e.preventDefault();
-        console.log(details);
+        // console.log(details);
         setworkerLoad(true);
         // API Call
         const { name, gender, contact, age, state, city, occupation, expectedSalary } = details;

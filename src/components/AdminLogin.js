@@ -44,12 +44,12 @@ const AdminLogin = (props) => {
         });
 
         const json = await response.json();
-        console.log(json);
+        // console.log(json);
         if(json.status == "SUCCESS"){
-            console.log(json.authToken);
+            // console.log(json.authToken);
             localStorage.setItem('token', json.authToken);
             localStorage.setItem('admin', 'true');
-            console.log("the auth token is : ", localStorage.getItem('token'));
+            // console.log("the auth token is : ", localStorage.getItem('token'));
             navigate("/");
             props.showAlert("success", "Logged In successfully");
             //getUserDetails(localStorage.getItem('token')); // for updating user name on the namvbar and account section
