@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 function UserRegister(props) {
 
-    const host = "https://nice-cyan-gorilla-tux.cyclic.cloud";
+    const host = "https://funny-newt-buckle.cyclic.app";
 
     const [credentials, setCredentials] = useState({ name: "", email: "", contact:"" , password: "", cpassword: "" });
 

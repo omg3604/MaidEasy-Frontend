@@ -9,7 +9,7 @@ import Select from 'react-select';
 
 const HouseHelpForm = (props) => {
 
-  const host = "https://blue-healthy-horse.cyclic.app";
+  const host = "https://funny-newt-buckle.cyclic.app";
 
   const [isClearable, setIsClearable] = useState(true);
   const [isSearchable, setIsSearchable] = useState(true);

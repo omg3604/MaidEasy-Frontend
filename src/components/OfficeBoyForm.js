@@ -9,7 +9,7 @@ import Select from 'react-select';
 
 const OfficeBoyForm = (props) => {
 
-  const host = "https://blue-healthy-horse.cyclic.app";
+  const host = "https://funny-newt-buckle.cyclic.app";
 
   const [Bookingdetails, setBookingDetails] = useState({ address: "", startDate: "", salary: 0, hoursPerDay: 0 });
 
